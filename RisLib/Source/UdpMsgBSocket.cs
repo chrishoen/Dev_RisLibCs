@@ -11,7 +11,7 @@ namespace Ris
    //***************************************************************************
    // Definitions
 
-   class TMessageSocketDefT
+   class MsgBSocketDefT
    {
       //************************************************************************
       // Use this for a buffer size for these sockets
@@ -25,9 +25,9 @@ namespace Ris
     //**************************************************************************
     // This encapsualtes the message header.
 
-    public class TMessageMsgHeader : ByteContent
+    public class MsgBHeader : ByteContent
     {
-        public TMessageMsgHeader()
+        public MsgBHeader()
         {
             mSyncWord1         = 0x11111111;
             mSyncWord2         = 0x22222222;
@@ -69,7 +69,7 @@ namespace Ris
                 mSyncWord1 != 0x11111111 ||
                 mSyncWord2 != 0x22222222 ||
                 mMessageLength < cLength  ||
-                mMessageLength > TMessageSocketDefT.cBufferSize;
+                mMessageLength > MsgBSocketDefT.cBufferSize;
 
             // If no error then valid
             mHeaderValidFlag = !tError;
@@ -120,7 +120,7 @@ namespace Ris
         // which they transfer into and out of the headers.
         //----------------------------------------------------------------------
 
-        public void headerCopyToFrom (ByteBuffer aBuffer,ByteTMessage aParent)
+        public void headerCopyToFrom (ByteBuffer aBuffer,ByteMsgB aParent)
         {
             //------------------------------------------------------------------
             // Instances of this class are members of parent message classes.
@@ -181,7 +181,7 @@ namespace Ris
             }
         }
 
-        public void headerReCopyToFrom  (ByteBuffer aBuffer,ByteTMessage aParent)
+        public void headerReCopyToFrom  (ByteBuffer aBuffer,ByteMsgB aParent)
         {
             // If this is a put operation then this actually copies the header
             // into the buffer. This sets some header length parameters and 
@@ -253,7 +253,7 @@ namespace Ris
 
         public UdpClient           mUdpClient;
         public IPEndPoint          mIPEndPoint;
-        public BaseTMessageCopier  mMsgCopier;
+        public BaseMsgBCopier  mMsgCopier;
         public int                 mRxCount;
         public bool                mValidFlag;
 
@@ -264,7 +264,7 @@ namespace Ris
         {
         }
 
-        public void configure(String aAddress,int aPort,BaseTMessageCopier aMsgCopier)
+        public void configure(String aAddress,int aPort,BaseMsgBCopier aMsgCopier)
         {
             mUdpClient  = new UdpClient(aPort);
             mIPEndPoint = new IPEndPoint(IPAddress.Parse(aAddress), aPort);
@@ -284,7 +284,7 @@ namespace Ris
         //**********************************************************************
         // Rceive record message via socket
 
-        public ByteTMessage receiveMessage ()
+        public ByteMsgB receiveMessage ()
         {
             //--------------------------------------------------------------
             // Receive bytes from socket
@@ -322,7 +322,7 @@ namespace Ris
             tBuffer.setCopyFrom();
             tBuffer.setLength(tRxBytes.Length);
 
-            TMessageMsgHeader tHeader = new TMessageMsgHeader();
+            MsgBHeader tHeader = new MsgBHeader();
 
             tBuffer.setCopyFrom();
             tBuffer.getFromBuffer(tHeader);
@@ -345,7 +345,7 @@ namespace Ris
             // object and return it.
 
             // Create a record based on the record type
-            ByteTMessage tMsg = mMsgCopier.createMessage(tHeader.mMessageIdentifier);
+            ByteMsgB tMsg = mMsgCopier.createMessage(tHeader.mMessageIdentifier);
 
             // Copy from the buffer into the record
             mMsgCopier.copyToFrom(tBuffer, tMsg);
@@ -367,7 +367,7 @@ namespace Ris
 
         public Socket              mSocket;
         public IPEndPoint          mIPEndPoint;
-        public BaseTMessageCopier  mMsgCopier;
+        public BaseMsgBCopier  mMsgCopier;
         public int                 mTxCount;
         public bool                mValidFlag;
 
@@ -378,7 +378,7 @@ namespace Ris
         {
         }
 
-        public void configure(String aAddress,int aPort,BaseTMessageCopier aMsgCopier)
+        public void configure(String aAddress,int aPort,BaseMsgBCopier aMsgCopier)
         {
             // Socket 
             mSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,ProtocolType.Udp);
@@ -390,15 +390,15 @@ namespace Ris
         //**********************************************************************
         // Send message via socket
 
-        public void sendMessage (ByteTMessage aMsg)
+        public void sendMessage (ByteMsgB aMsg)
         {
             // Create byte buffer
-            ByteBuffer tBuffer = new ByteBuffer(TMessageSocketDefT.cBufferSize);
+            ByteBuffer tBuffer = new ByteBuffer(MsgBSocketDefT.cBufferSize);
 
             //------------------------------------------------------------------
             // Instance of a header,set members
 
-            TMessageMsgHeader tHeader = new TMessageMsgHeader();
+            MsgBHeader tHeader = new MsgBHeader();
             tHeader.mMessageIdentifier = aMsg.mMessageType;
 
             //------------------------------------------------------------------

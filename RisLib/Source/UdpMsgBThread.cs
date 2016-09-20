@@ -10,25 +10,25 @@ namespace Ris
     //**************************************************************************
     //**************************************************************************
 
-    public abstract class UdpMsgThread
+    public abstract class UdpMsgBThread
     {
         //**********************************************************************
         // Inheriting classes override this method to process received messages
 
-        public abstract void processRxMsg (ByteContent aRxMsg);
+        public abstract void processRxMessage (ByteMsgB aMsg);
 
         //**********************************************************************
         // Members
 
-        public Thread            mThread;
-        public UdpRxMsgSocket    mRxSocket;
-        public UdpTxMsgSocket    mTxSocket;
-        public int               mRxCount;
+        public Thread               mThread;
+        public UdpRxTMessageSocket  mRxSocket;
+        public UdpTxTMessageSocket  mTxSocket;
+        public int                  mRxCount;
 
         //**********************************************************************
         // Constructor
 
-        public UdpMsgThread()
+        public UdpMsgBThread()
         {
         }
 
@@ -37,15 +37,15 @@ namespace Ris
             int aRxPort, 
             String aTxAddress, 
             int aTxPort, 
-            BaseMessageParserCreator aMessageParserCreator)
+            BaseMsgBCopier aMsgCopier)
         {
             // Rx socket
-            mRxSocket = new UdpRxMsgSocket();
-            mRxSocket.configure(aRxAddress,aRxPort,aMessageParserCreator.createNew());
+            mRxSocket = new UdpRxTMessageSocket();
+            mRxSocket.configure(aRxAddress,aRxPort,aMsgCopier);
 
             // Tx socket
-            mTxSocket = new UdpTxMsgSocket();
-            mTxSocket.configure(aTxAddress,aTxPort,aMessageParserCreator.createNew());
+            mTxSocket = new UdpTxTMessageSocket();
+            mTxSocket.configure(aTxAddress,aTxPort,aMsgCopier);
         }
 
         //**********************************************************************
@@ -82,14 +82,14 @@ namespace Ris
                 //--------------------------------------------------------------
                 // Receive from the message socket
 
-                ByteContent tMsg = mRxSocket.receiveMsg();
+                ByteMsgB tMsg = mRxSocket.receiveMessage();
 
                 //--------------------------------------------------------------
                 // Call inheritor's override to process the message
 
                 if (tMsg != null)
                 {
-                    processRxMsg(tMsg);
+                    processRxMessage(tMsg);
                 }
                 else
                 {
@@ -103,9 +103,9 @@ namespace Ris
         //**********************************************************************
         // Transmit message
 
-        public void sendMsg(ByteContent aTxMsg)
+        public void sendMessage(ByteMsgB aMsg)
         {
-            mTxSocket.sendMsg(aTxMsg);
+            mTxSocket.sendMessage(aMsg);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Ris
 
         public UdpClient         mUdpClient;
         public IPEndPoint        mIPEndPoint;
-        public BaseMessageParser mMessageParser;
+        public BaseMsgAParser mMessageParser;
         public int               mRxMsgCount;
 
         //**********************************************************************

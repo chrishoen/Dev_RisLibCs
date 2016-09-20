@@ -10,25 +10,25 @@ namespace Ris
     //**************************************************************************
     //**************************************************************************
 
-    public class UdpRxMsgSocket
+    public class UdpRxMsgASocket
     {
         //**********************************************************************
         // Members
 
         public UdpClient         mUdpClient;
         public IPEndPoint        mIPEndPoint;
-        public BaseMessageParser mMessageParser;
+        public BaseMsgAParser mMessageParser;
         public int               mRxCount;
         public bool              mValidFlag;
 
         //**********************************************************************
         // Constructor
 
-        public UdpRxMsgSocket()
+        public UdpRxMsgASocket()
         {
         }
 
-        public void configure(String aAddress, int aPort, BaseMessageParser aMessageParser)
+        public void configure(String aAddress, int aPort, BaseMsgAParser aMessageParser)
         {
             mUdpClient  = new UdpClient(aPort);
             mIPEndPoint = new IPEndPoint(IPAddress.Parse(aAddress), aPort);
@@ -140,7 +140,7 @@ namespace Ris
 
         public Socket            mSocket;
         public IPEndPoint        mIPEndPoint;
-        public BaseMessageParser mMessageParser;
+        public BaseMsgAParser mMessageParser;
         public int               mTxMsgCount;
         public bool              mValidFlag;
 
@@ -151,7 +151,7 @@ namespace Ris
         {
         }
 
-        public void configure(String aAddress, int aPort, BaseMessageParser aMessageParser)
+        public void configure(String aAddress, int aPort, BaseMsgAParser aMessageParser)
         {
             // Socket 
             mSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,ProtocolType.Udp);

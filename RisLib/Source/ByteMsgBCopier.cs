@@ -9,17 +9,17 @@ namespace Ris
     //******************************************************************************
     //******************************************************************************
 
-    public abstract class BaseTMessageCopier
+    public abstract class BaseMsgBCopier
     { 
         //***********************************************************************
         // This creates a new record, based on a record type
 
-        public abstract ByteTMessage createMessage (int aMessageType);
+        public abstract ByteMsgB createMessage (int aMessageType);
 
         //***********************************************************************
         // This copies byte buffers to/from records
 
-        public abstract void copyToFrom( ByteBuffer aBuffer, ByteTMessage aMsg);
+        public abstract void copyToFrom( ByteBuffer aBuffer, ByteMsgB aMsg);
     };
 
 }

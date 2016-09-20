@@ -12,9 +12,9 @@ namespace Ris
     // extract messages, as opposed to having the message classes being visible
     // to the receiving code.
 
-    public abstract class BaseMessageParser
+    public abstract class BaseMsgAParser
     {
-        public BaseMessageParser()
+        public BaseMsgAParser()
         {
             mHeaderLength=0;
             mMessageLength=0;
@@ -101,9 +101,9 @@ namespace Ris
     // It is used by transmitters and receivers to create new instances of message
     // parsers.
 
-    public abstract class BaseMessageParserCreator
+    public abstract class BaseMsgAParserCreator
     {
-       public abstract BaseMessageParser createNew();
+       public abstract BaseMsgAParser createNew();
     };
 
 }

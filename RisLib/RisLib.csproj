@@ -44,9 +44,9 @@
     <Compile Include="Source\ByteContent_Main.cs" />
     <Compile Include="Source\ByteContent_RType.cs" />
     <Compile Include="Source\ByteContent_VType.cs" />
-    <Compile Include="Source\ByteMessageParser.cs" />
-    <Compile Include="Source\ByteTMessage.cs" />
-    <Compile Include="Source\ByteTMessageCopier.cs" />
+    <Compile Include="Source\ByteMsgAParser.cs" />
+    <Compile Include="Source\ByteMsgB.cs" />
+    <Compile Include="Source\ByteMsgBCopier.cs" />
     <Compile Include="Source\CmdLineCmd.cs" />
     <Compile Include="Source\CmdLineConsole.cs" />
     <Compile Include="Source\CmdLineExec.cs" />
@@ -54,11 +54,11 @@
     <Compile Include="Source\PortDef.cs" />
     <Compile Include="Source\Print.cs" />
     <Compile Include="Source\PrintSettings.cs" />
-    <Compile Include="Source\UdpMsgSocket.cs" />
-    <Compile Include="Source\UdpMsgThread.cs" />
+    <Compile Include="Source\UdpMsgASocket.cs" />
+    <Compile Include="Source\UdpMsgAThread.cs" />
     <Compile Include="Source\UdpStringSocket.cs" />
-    <Compile Include="Source\UdpTMessageSocket.cs" />
-    <Compile Include="Source\UdpTMessageThread.cs" />
+    <Compile Include="Source\UdpMsgBSocket.cs" />
+    <Compile Include="Source\UdpMsgBThread.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
