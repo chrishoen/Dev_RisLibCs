@@ -4,9 +4,7 @@ using System.IO;
 using Ris;
 
 /*==============================================================================
-This file contains a set of classes that encapsulate the message set
-that is used to communicate with Intranet. The messages are specified
-in the IDD.
+This file contains a set of classes that encapsulate a message set.
 
 There is a class for each particular message in the set and there is a
 base class that all of the messages inherit from.
@@ -36,7 +34,7 @@ namespace ProtoComm
 
     public class MsgIdT
     {
-        //--------------------------------------------------------------------------
+        //**************************************************************************
         // Message type indentifier
 
         public const int cUnspecified    =  0;
@@ -45,7 +43,6 @@ namespace ProtoComm
         public const int cStatusRequest  =  3;
         public const int cStatusResponse =  4;
         public const int cData           =  5;
-
     };
 
     //******************************************************************************
@@ -55,7 +52,7 @@ namespace ProtoComm
 
     public class MsgCreator : Ris.BaseMsgCreator
     {
-        //--------------------------------------------------------------------------
+        //**************************************************************************
         // Create a new message based on a message type
 
         public override Ris.ByteContent createMsg(int aMessageType)
@@ -94,7 +91,7 @@ namespace ProtoComm
 
     public partial class TestMsg : BaseMsg
     {
-
+        //**************************************************************************
         public TestMsg ()
         {
             mMessageType = MsgIdT.cTest;
@@ -104,6 +101,7 @@ namespace ProtoComm
             mCode4 = 904;
         } 
 
+        //**************************************************************************
         public override void copyToFrom (ByteBuffer aBuffer)
         {
             mHeader.headerCopyToFrom(aBuffer,this);
@@ -115,7 +113,6 @@ namespace ProtoComm
 
             mHeader.headerReCopyToFrom(aBuffer,this);
         }
-
     };
 
     //******************************************************************************
@@ -124,13 +121,14 @@ namespace ProtoComm
 
     public partial class FirstMessageMsg : BaseMsg
     {
-
+        //**************************************************************************
         public FirstMessageMsg()
         {
             mMessageType = MsgIdT.cFirstMessage;
             mCode1 = 0;
         }
 
+        //**************************************************************************
         public override void copyToFrom (ByteBuffer aBuffer)
         {
             mHeader.headerCopyToFrom(aBuffer,this);
@@ -147,7 +145,7 @@ namespace ProtoComm
 
     public partial class StatusRequestMsg : BaseMsg
     {
-
+        //**************************************************************************
         public StatusRequestMsg ()
         {
             mMessageType = MsgIdT.cStatusRequest;
@@ -166,6 +164,7 @@ namespace ProtoComm
             }
         } 
 
+        //**************************************************************************
         public override void copyToFrom (ByteBuffer aBuffer)
         {
             mHeader.headerCopyToFrom(aBuffer,this);
@@ -190,7 +189,7 @@ namespace ProtoComm
 
     public partial class StatusResponseMsg : BaseMsg
     {
-
+        //**************************************************************************
         public StatusResponseMsg ()
         {
             mMessageType = MsgIdT.cStatusResponse;
@@ -209,6 +208,7 @@ namespace ProtoComm
             }
         } 
 
+        //**************************************************************************
         public override void copyToFrom (ByteBuffer aBuffer)
         {
             mHeader.headerCopyToFrom(aBuffer,this);
@@ -230,7 +230,7 @@ namespace ProtoComm
     
     public partial class DataRecord : ByteContent
     {
-
+        //**************************************************************************
         public DataRecord()
         {
             mCode1 = 0;
@@ -239,6 +239,7 @@ namespace ProtoComm
             mCode4 = 0;
         }
 
+        //**************************************************************************
         public override void copyToFrom (ByteBuffer aBuffer)
         {
             aBuffer.copy(ref mCode1 );
@@ -255,7 +256,7 @@ namespace ProtoComm
 
     public partial class DataMsg : BaseMsg
     {
-
+        //**************************************************************************
         public DataMsg()
         {
             mMessageType = MsgIdT.cData;
@@ -276,6 +277,7 @@ namespace ProtoComm
             mDataRecord = new DataRecord();
         }
 
+        //**************************************************************************
         public override void copyToFrom (ByteBuffer aBuffer)
         {
             mHeader.headerCopyToFrom(aBuffer, this);
@@ -297,7 +299,5 @@ namespace ProtoComm
 
             mHeader.headerReCopyToFrom(aBuffer, this);
         }
-
-
     };
 }

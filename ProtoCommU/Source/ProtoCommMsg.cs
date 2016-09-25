@@ -4,9 +4,7 @@ using System.IO;
 using Ris;
 
 /*==============================================================================
-This file contains a set of classes that encapsulate the message set
-that is used to communicate with Intranet. The messages are specified
-in the IDD.
+This file contains a set of classes that encapsulate a message set.
 
 There is a class for each particular message in the set and there is a
 base class that all of the messages inherit from.
@@ -37,18 +35,13 @@ namespace ProtoComm
 
     public partial class TestMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
+        //**************************************************************************
+        // Members:
 
         public int mCode1;
         public int mCode2;
         public int mCode3;
         public int mCode4;
-
-        // Content
-        //------------------------------------------------
-
-
     };
 
     //******************************************************************************
@@ -57,14 +50,10 @@ namespace ProtoComm
 
     public partial class FirstMessageMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
+        //**************************************************************************
+        // Members:
 
         public int mCode1;
-
-        // Content
-        //------------------------------------------------
-
     };
 
     //******************************************************************************
@@ -73,8 +62,8 @@ namespace ProtoComm
 
     public partial class StatusRequestMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
+        //**************************************************************************
+        // Members:
 
         public int mCode1;
         public int mCode2;
@@ -84,9 +73,6 @@ namespace ProtoComm
         public const int cMaxWords = 10;
         public int       mNumOfWords;
         public int[]     mWords;
-
-        // Content
-        //------------------------------------------------
 
     };
     //******************************************************************************
@@ -95,8 +81,8 @@ namespace ProtoComm
 
     public partial class StatusResponseMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
+        //**************************************************************************
+        // Members:
 
         public int mCode1;
         public int mCode2;
@@ -107,34 +93,28 @@ namespace ProtoComm
         public int       mNumOfWords;
         public int[]     mWords;
 
-        // Content
-        //------------------------------------------------
-
-
     };
     
     public partial class DataRecord : ByteContent
     {
-        //------------------------------------------------
-        // Content
+        //**************************************************************************
+        // Members:
 
         public int mCode1;
         public int mCode2;
         public int mCode3;
         public int mCode4;
 
-        // Content
-        //------------------------------------------------
-
     }
+
     //******************************************************************************
     //******************************************************************************
     //******************************************************************************
 
     public partial class DataMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
+        //**************************************************************************
+        // Members:
 
         public const int cMaxStringSize = 10;
 
@@ -152,10 +132,6 @@ namespace ProtoComm
         public String        mString1;
         public String        mString2;
         public DataRecord    mDataRecord;
-
-        // Content
-        //------------------------------------------------
-
 
     };
 }
