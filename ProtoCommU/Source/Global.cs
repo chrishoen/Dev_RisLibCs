@@ -18,12 +18,27 @@ namespace ProtoComm
         //******************************************************************************
         // Initialize
 
-        public static void initialize()
+        public static void initialize(string[] args)
         {
+            int tAppCode=1;
+            if (args.Length == 1)
+            {
+                if (args[0].CompareTo("UdpPeer1")==0) tAppCode=1;
+                if (args[0].CompareTo("UdpPeer2")==0) tAppCode=2;
+            }
+            Console.WriteLine("AppCode {0}",tAppCode);
+                
             ProtoComm.MsgMonkeyCreator tMonkeyCreator = new ProtoComm.MsgMonkeyCreator();
             
             mNetworkThread = new ProtoComm.NetworkThread();
-            mNetworkThread.configure(tMonkeyCreator,"127.0.0.1", 56002, "127.0.0.1", 56001);
+            if (tAppCode == 1)
+            {
+                mNetworkThread.configure(tMonkeyCreator, "127.0.0.1", 56002, "127.0.0.1", 56001);
+            }
+            else
+            {
+                mNetworkThread.configure(tMonkeyCreator, "127.0.0.1", 56001, "127.0.0.1", 56002);
+            }
             mNetworkThread.start();
         }
 

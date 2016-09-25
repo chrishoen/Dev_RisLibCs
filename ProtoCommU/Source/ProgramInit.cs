@@ -17,11 +17,11 @@ namespace MainApp
         //**********************************************************************
         //**********************************************************************
 
-        public static void initialize()
+        public static void initialize(string[] args)
         {
             Console.WriteLine("ProtoCommU_CS BEGIN");
             initializePrint();
-            Global.initialize();
+            Global.initialize(args);
         }
 
         //**********************************************************************
