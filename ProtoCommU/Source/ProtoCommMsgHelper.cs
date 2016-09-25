@@ -160,7 +160,6 @@ namespace ProtoComm
             aMsg.mBool = true;
             aMsg.mString1 = @"abcdef";
             aMsg.mString2 = @"01234567";
-            aMsg.mDataRecord.initialize();
             initialize(aMsg.mDataRecord);
         }
 

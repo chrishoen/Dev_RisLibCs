@@ -16,9 +16,9 @@ namespace ProtoComm
         //**********************************************************************
         // Receive message handlers
 
-        public override void processRxMsg(ByteContent aRxMsg)
+        public override void processRxMsg(ByteContent aMsg)
         {
-            BaseMsg tRxMsg = (BaseMsg)aRxMsg;
+            BaseMsg tRxMsg = (BaseMsg)aMsg;
 
             // Message jump table based on message type.
             // Calls corresponding specfic message handler method.
@@ -44,38 +44,37 @@ namespace ProtoComm
         //******************************************************************************
         // Message handler - TestMsg.
 
-        void processRxMsg(TestMsg aRxMsg)
+        void processRxMsg(TestMsg aMsg)
         {
             Prn.print(Prn.ThreadRun1, "NetworkThread.processRxMsg_TestMsg");
+            Helper.show(aMsg);
         }
 
         //******************************************************************************
         // Rx message handler - StatusRequestMsg
 
-        void processRxMsg(StatusRequestMsg aRxMsg)
+        void processRxMsg(StatusRequestMsg aMsg)
         {
             Prn.print(Prn.ThreadRun1, "NetworkThread.processRxMsg_StatusRequestMsg");
-            Prn.print(Prn.ThreadRun1, "Code1      {0}", aRxMsg.mCode1);
-            Prn.print(Prn.ThreadRun1, "Code2      {0}", aRxMsg.mCode2);
-            Prn.print(Prn.ThreadRun1, "Code3      {0}", aRxMsg.mCode3);
-            Prn.print(Prn.ThreadRun1, "Code4      {0}", aRxMsg.mCode4);
+            Helper.show(aMsg);
         }
 
         //******************************************************************************
         // Rx message handler - StatusResponseMsg
 
-        void processRxMsg(StatusResponseMsg aRxMsg)
+        void processRxMsg(StatusResponseMsg aMsg)
         {
             Prn.print(Prn.ThreadRun1, "NetworkThread.processRxMsg_StatusResponseMsg");
+            Helper.show(aMsg);
         }
 
         //******************************************************************************
         // Rx message handler - DataMsg
 
-        void processRxMsg(DataMsg aRxMsg)
+        void processRxMsg(DataMsg aMsg)
         {
             Prn.print(Prn.ThreadRun1, "NetworkThread.processRxMsg_DataMsg");
-            aRxMsg.show();
+            Helper.show(aMsg);
         }
     }
 }

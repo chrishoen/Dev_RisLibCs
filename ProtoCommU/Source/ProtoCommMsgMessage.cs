@@ -92,18 +92,8 @@ namespace ProtoComm
     // Particular message classes.
     // There is one class for each message in the message set.
 
-    public class TestMsg : BaseMsg
+    public partial class TestMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
-
-        public int mCode1;
-        public int mCode2;
-        public int mCode3;
-        public int mCode4;
-
-        // Content
-        //------------------------------------------------
 
         public TestMsg ()
         {
@@ -126,36 +116,14 @@ namespace ProtoComm
             mHeader.headerReCopyToFrom(aBuffer,this);
         }
 
-        public void initialize()
-        {
-            mCode1 = 901;
-            mCode2 = 902;
-            mCode3 = 903;
-            mCode4 = 904;
-        }
-
-        public void show()
-        {
-            Console.WriteLine ("{0}",mCode1);
-            Console.WriteLine ("{0}",mCode2);
-            Console.WriteLine ("{0}",mCode3);
-            Console.WriteLine ("{0}",mCode4);
-        }
     };
 
     //******************************************************************************
     //******************************************************************************
     //******************************************************************************
 
-    public class FirstMessageMsg : BaseMsg
+    public partial class FirstMessageMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
-
-        public int mCode1;
-
-        // Content
-        //------------------------------------------------
 
         public FirstMessageMsg()
         {
@@ -177,22 +145,8 @@ namespace ProtoComm
     //******************************************************************************
     //******************************************************************************
 
-    public class StatusRequestMsg : BaseMsg
+    public partial class StatusRequestMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
-
-        public int mCode1;
-        public int mCode2;
-        public int mCode3;
-        public int mCode4;
-
-        public const int cMaxWords = 10;
-        public int       mNumOfWords;
-        public int[]     mWords;
-
-        // Content
-        //------------------------------------------------
 
         public StatusRequestMsg ()
         {
@@ -234,22 +188,8 @@ namespace ProtoComm
     //******************************************************************************
     //******************************************************************************
 
-    public class StatusResponseMsg : BaseMsg
+    public partial class StatusResponseMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
-
-        public int mCode1;
-        public int mCode2;
-        public int mCode3;
-        public int mCode4;
-
-        public const int cMaxWords = 10;
-        public int       mNumOfWords;
-        public int[]     mWords;
-
-        // Content
-        //------------------------------------------------
 
         public StatusResponseMsg ()
         {
@@ -288,18 +228,8 @@ namespace ProtoComm
         }
     };
     
-    public class DataRecord : ByteContent
+    public partial class DataRecord : ByteContent
     {
-        //------------------------------------------------
-        // Content
-
-        public int mCode1;
-        public int mCode2;
-        public int mCode3;
-        public int mCode4;
-
-        // Content
-        //------------------------------------------------
 
         public DataRecord()
         {
@@ -317,51 +247,14 @@ namespace ProtoComm
             aBuffer.copy(ref mCode4 );
         }
 
-        public void initialize()
-        {
-            mCode1 = 701;
-            mCode2 = 702;
-            mCode3 = 703;
-            mCode4 = 704;
-        }
-
-        public void show()
-        {
-            Console.WriteLine("{0}", mCode1);
-            Console.WriteLine("{0}", mCode2);
-            Console.WriteLine("{0}", mCode3);
-            Console.WriteLine("{0}", mCode4);
-            Console.WriteLine("");
-        }
     }
-//******************************************************************************
+
+    //******************************************************************************
     //******************************************************************************
     //******************************************************************************
 
-    public class DataMsg : BaseMsg
+    public partial class DataMsg : BaseMsg
     {
-        //------------------------------------------------
-        // Content
-
-        public const int cMaxStringSize = 10;
-
-        public byte          mUChar;
-        public ushort        mUShort;
-        public uint          mUInt;
-        public ulong         mUInt64;
-        public sbyte         mChar;
-        public short         mShort;
-        public int           mInt;
-        public long          mInt64;
-        public float         mFloat;
-        public double        mDouble;
-        public bool          mBool;
-        public String        mString1;
-        public String        mString2;
-        public DataRecord    mDataRecord;
-
-        // Content
-        //------------------------------------------------
 
         public DataMsg()
         {
@@ -405,42 +298,6 @@ namespace ProtoComm
             mHeader.headerReCopyToFrom(aBuffer, this);
         }
 
-        public void initialize()
-        {
-            mUChar  = 0x11;
-            mUShort = 0x1234;
-            mUInt   = 0x12345678;
-            mUInt64 = 0x1112131415161718;
-            mChar   = 0x11;
-            mShort  = 0x1234;
-            mInt    = 0x12345678;
-            mInt64  = 0x1112131415161718;
-            mFloat  = 12.34f;
-            mDouble = 56.78;
-            mBool   = true;
-            mString1 = @"abcdef";
-            mString2 = @"01234567";
-            mDataRecord.initialize();
-        }
-
-        public void show()
-        {
-            Console.WriteLine("UChar    {0:X}",  mUChar   );
-            Console.WriteLine("UShort   {0:X}",  mUShort  );
-            Console.WriteLine("UInt     {0:X}",  mUInt    );
-            Console.WriteLine("Unit64   {0:X}",  mUInt64  );
-            Console.WriteLine("Char     {0:X}",  mChar    );
-            Console.WriteLine("Short    {0:X}",  mShort   );
-            Console.WriteLine("Int      {0:X}",  mInt     );
-            Console.WriteLine("Int64    {0:X}",  mInt64   );
-            Console.WriteLine("Float    {0}",    mFloat   );
-            Console.WriteLine("Double   {0}",    mDouble  );
-            Console.WriteLine("Bool     {0}",    mBool    );
-            Console.WriteLine("String   {0}",    mString1 );
-            Console.WriteLine("String   {0}",    mString2 );
-            mDataRecord.show();
-            Console.WriteLine("");
-        }
 
     };
 }

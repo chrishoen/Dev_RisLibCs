@@ -46,16 +46,37 @@ namespace MainApp
             {
                 case 1:
                 {
-                    TestMsg tTxMsg = new TestMsg();
-                    tTxMsg.initialize();
-                    Global.mNetworkThread.sendMsg(tTxMsg);
+                    TestMsg tMsg = new TestMsg();
+                    Helper.initialize(tMsg);
+                    Global.mNetworkThread.sendMsg(tMsg);
+                    break;
+                }
+                case 2:
+                {
+                    FirstMessageMsg tMsg = new FirstMessageMsg();
+                    Helper.initialize(tMsg);
+                    Global.mNetworkThread.sendMsg(tMsg);
+                    break;
+                }
+                case 3:
+                {
+                    StatusRequestMsg tMsg = new StatusRequestMsg();
+                    Helper.initialize(tMsg);
+                    Global.mNetworkThread.sendMsg(tMsg);
+                    break;
+                }
+                case 4:
+                {
+                    StatusResponseMsg tMsg = new StatusResponseMsg();
+                    Helper.initialize(tMsg);
+                    Global.mNetworkThread.sendMsg(tMsg);
                     break;
                 }
                 case 5:
                 {
-                    DataMsg tTxMsg = new DataMsg();
-                    tTxMsg.initialize();
-                    Global.mNetworkThread.sendMsg(tTxMsg);
+                    DataMsg tMsg = new DataMsg();
+                    Helper.initialize(tMsg);
+                    Global.mNetworkThread.sendMsg(tMsg);
                     break;
                 }
             }
