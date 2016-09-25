@@ -152,7 +152,7 @@ namespace ProtoComm
         //------------------------------------------------
         // Content
 
-        int mCode1;
+        public int mCode1;
 
         // Content
         //------------------------------------------------
@@ -293,44 +293,44 @@ namespace ProtoComm
         //------------------------------------------------
         // Content
 
-        public int mX1;
-        public int mX2;
-        public int mX3;
-        public int mX4;
+        public int mCode1;
+        public int mCode2;
+        public int mCode3;
+        public int mCode4;
 
         // Content
         //------------------------------------------------
 
         public DataRecord()
         {
-            mX1 = 0;
-            mX2 = 0;
-            mX3 = 0;
-            mX4 = 0;
+            mCode1 = 0;
+            mCode2 = 0;
+            mCode3 = 0;
+            mCode4 = 0;
         }
 
         public override void copyToFrom (ByteBuffer aBuffer)
         {
-            aBuffer.copy(ref mX1 );
-            aBuffer.copy(ref mX2 );
-            aBuffer.copy(ref mX3 );
-            aBuffer.copy(ref mX4 );
+            aBuffer.copy(ref mCode1 );
+            aBuffer.copy(ref mCode2 );
+            aBuffer.copy(ref mCode3 );
+            aBuffer.copy(ref mCode4 );
         }
 
         public void initialize()
         {
-            mX1 = 701;
-            mX2 = 702;
-            mX3 = 703;
-            mX4 = 704;
+            mCode1 = 701;
+            mCode2 = 702;
+            mCode3 = 703;
+            mCode4 = 704;
         }
 
         public void show()
         {
-            Console.WriteLine("{0}", mX1);
-            Console.WriteLine("{0}", mX2);
-            Console.WriteLine("{0}", mX3);
-            Console.WriteLine("{0}", mX4);
+            Console.WriteLine("{0}", mCode1);
+            Console.WriteLine("{0}", mCode2);
+            Console.WriteLine("{0}", mCode3);
+            Console.WriteLine("{0}", mCode4);
             Console.WriteLine("");
         }
     }
