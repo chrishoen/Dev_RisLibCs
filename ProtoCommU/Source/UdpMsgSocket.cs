@@ -9,11 +9,14 @@ namespace Ris
     //**************************************************************************
     //**************************************************************************
     //**************************************************************************
+    // Receive socket class. This receives byte content messages from a socket.
 
     public class UdpRxMsgSocket
     {
         //**********************************************************************
-        // Members
+        //**********************************************************************
+        //**********************************************************************
+        // Members.
 
         public BaseMsgMonkey     mMonkey;
         public UdpClient         mUdpClient;
@@ -22,11 +25,9 @@ namespace Ris
         public bool              mValidFlag;
 
         //**********************************************************************
-        // Constructor
-
-        public UdpRxMsgSocket()
-        {
-        }
+        //**********************************************************************
+        //**********************************************************************
+        // Configure the socket.
 
         public void configure(BaseMsgMonkeyCreator aMonkeyCreator,String aAddress, int aPort)
         {
@@ -47,16 +48,18 @@ namespace Ris
         }
 
         //**********************************************************************
-        // Rceive record message via socket
+        //**********************************************************************
+        //**********************************************************************
+        // Receive message from socket.
 
         public ByteContent receiveMsg()
         {
-            //--------------------------------------------------------------
+            //------------------------------------------------------------------
             // Guard
 
             if (mUdpClient == null) return null;
 
-            //--------------------------------------------------------------
+            //------------------------------------------------------------------
             // Receive bytes from socket
 
             byte[] tRxBytes = null;
@@ -70,8 +73,8 @@ namespace Ris
                 Prn.print(Prn.SocketRun1, "UdpRxSocket Receive EXCEPTION");
                 return null;
             }
-            //--------------------------------------------------------------
-            // Guard
+            //------------------------------------------------------------------
+            // Guard.
 
             if (tRxBytes != null)
             {
@@ -83,17 +86,16 @@ namespace Ris
                 return null;
             }
 
-            //--------------------------------------------------------------
-            // Create byte buffer
+            //------------------------------------------------------------------
+            // Create byte buffer.
 
             ByteBuffer tBuffer = new ByteBuffer(tRxBytes);
             tBuffer.setCopyFrom();
             tBuffer.setLength(tRxBytes.Length);
 
-            //--------------------------------------------------------------
+            //------------------------------------------------------------------
             // Copy from the receive buffer into the message parser object
             // and validate the header
-
 
             mMonkey.extractMessageHeaderParms(tBuffer);
 
@@ -109,7 +111,7 @@ namespace Ris
                 mMonkey.
                 mMessageType);
 
-            //--------------------------------------------------------------
+            //------------------------------------------------------------------
             // At this point the buffer contains the complete message.
             // Extract the message from the byte buffer into a new message
             // object and return it.
@@ -129,12 +131,16 @@ namespace Ris
             return tRxMsg;
         }
     }
+
     //**************************************************************************
     //**************************************************************************
     //**************************************************************************
+    // Transmit socket class. This sends byte content messages to a socket.
 
     public class UdpTxMsgSocket
     {
+        //**********************************************************************
+        //**********************************************************************
         //**********************************************************************
         // Members
 
@@ -145,11 +151,9 @@ namespace Ris
         public bool              mValidFlag;
 
         //**********************************************************************
-        // Constructor
-
-        public UdpTxMsgSocket()
-        {
-        }
+        //**********************************************************************
+        //**********************************************************************
+        // Configure the socket.
 
         public void configure(BaseMsgMonkeyCreator aMonkeyCreator,String aAddress, int aPort)
         {
@@ -161,16 +165,20 @@ namespace Ris
         }
 
         //**********************************************************************
-        // Send message via socket
+        //**********************************************************************
+        //**********************************************************************
+        // Send message to the socket.
 
         public void sendMsg (ByteContent aMsg)
         {
+            //------------------------------------------------------------------
             // Create byte buffer.
             ByteBuffer tBuffer = new ByteBuffer(mMonkey.getMaxBufferSize());
 
             // Copy message to buffer.
             mMonkey.putMsgToBuffer(tBuffer,aMsg);
 
+            //------------------------------------------------------------------
             // Send buffer to socket. 
             byte[] tTxBytes  = tBuffer.getBaseAddress();
             int    tTxLength = tBuffer.getPosition();
