@@ -385,22 +385,4 @@ namespace ProtoComm
            return (Ris.BaseMsgMonkey)tMonkey;
         }
     };
-
-    //***************************************************************************
-    //***************************************************************************
-    //***************************************************************************
-    // Message Creator
-
-    public class MsgCreator : Ris.BaseMsgCreator
-    {
-        //***************************************************************************
-        // Create a new message, based on a message type.
-
-        public override Ris.ByteContent createMsg (int aMessageType)
-        {
-            return null;
-        }
-    };
-
-
 }
