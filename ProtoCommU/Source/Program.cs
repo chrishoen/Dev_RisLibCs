@@ -10,9 +10,9 @@ namespace MainApp
     {
         static void Main(string[] args)
         {
-            Prn.initializeForConsole();
-            MyCmdLineExec tCmdLineExec = new MyCmdLineExec();
-            CmdLineConsole.execute(tCmdLineExec);
+            Init.initialize();
+            CmdLineConsole.execute(new MyCmdLineExec());
+            Init.finalize();
         }
     }
 }

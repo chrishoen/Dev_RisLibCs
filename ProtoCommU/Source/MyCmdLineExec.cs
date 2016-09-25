@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Ris;
+using ProtoComm;
 
 namespace MainApp
 {
@@ -54,20 +55,36 @@ namespace MainApp
 
         public void OnGo3(CmdLineCmd aCmd)
         {
-            aCmd.setArgDefault(1, "aaaaaaa");
+            ByteBuffer tBuffer = new ByteBuffer(1000);
+            TestMsg tTxMsg = new TestMsg();
+            TestMsg tRxMsg = null;
+            Helper.initialize(tTxMsg);
 
-            Console.WriteLine("GO3{1,-10}GO3", aCmd.argString(1));
+            MsgMonkey tMonkey = new MsgMonkey();
+
+            tMonkey.putMsgToBuffer(tBuffer,tTxMsg);
+            tBuffer.rewind();
+            tRxMsg = (TestMsg)tMonkey.makeMsgFromBuffer(tBuffer);
+            
+            Helper.show(tRxMsg);
         }
 
         //**********************************************************************
 
         public void OnGo4(CmdLineCmd aCmd)
         {
-            aCmd.setArgDefault(1, 101);
+            ByteBuffer tBuffer = new ByteBuffer(1000);
+            DataMsg tTxMsg = new DataMsg();
+            DataMsg tRxMsg = null;
+            Helper.initialize(tTxMsg);
 
-            UInt16 tN = aCmd.argUInt16(1);
+            MsgMonkey tMonkey = new MsgMonkey();
 
-            Console.WriteLine("{0}", tN);
+            tMonkey.putMsgToBuffer(tBuffer,tTxMsg);
+            tBuffer.rewind();
+            tRxMsg = (DataMsg)tMonkey.makeMsgFromBuffer(tBuffer);
+            
+            Helper.show(tRxMsg);
         }
 
 

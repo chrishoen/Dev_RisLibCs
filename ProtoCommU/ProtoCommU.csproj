@@ -47,6 +47,7 @@
     <Compile Include="Source\MsgMonkey.cs" />
     <Compile Include="Source\MyCmdLineExec.cs" />
     <Compile Include="Source\Program.cs" />
+    <Compile Include="Source\ProgramInit.cs" />
     <Compile Include="Source\ProtoCommMsgBase.cs" />
     <Compile Include="Source\ProtoCommMsgHelper.cs" />
     <Compile Include="Source\ProtoCommMsgMessage.cs" />
