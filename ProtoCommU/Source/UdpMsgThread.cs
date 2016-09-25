@@ -10,7 +10,7 @@ namespace Ris
     //**************************************************************************
     //**************************************************************************
 
-    public abstract class UdpMsgAThread
+    public abstract class UdpMsgThread
     {
         //**********************************************************************
         // Inheriting classes override this method to process received messages
@@ -21,31 +21,24 @@ namespace Ris
         // Members
 
         public Thread            mThread;
-        public UdpRxMsgASocket   mRxSocket;
-        public UdpTxMsgASocket   mTxSocket;
+        public UdpRxMsgSocket    mRxSocket;
+        public UdpTxMsgSocket    mTxSocket;
         public int               mRxCount;
 
-        //**********************************************************************
-        // Constructor
-
-        public UdpMsgAThread()
-        {
-        }
-
         public void configure(
+            BaseMsgMonkeyCreator aMonkeyCreator,
             String aRxAddress, 
             int aRxPort, 
             String aTxAddress, 
-            int aTxPort, 
-            BaseMsgAParserCreator aMessageParserCreator)
+            int aTxPort)
         {
             // Rx socket
-            mRxSocket = new UdpRxMsgASocket();
-            mRxSocket.configure(aRxAddress,aRxPort,aMessageParserCreator.createNew());
+            mRxSocket = new UdpRxMsgSocket();
+            mRxSocket.configure(aMonkeyCreator,aRxAddress,aRxPort);
 
             // Tx socket
-            mTxSocket = new UdpTxMsgASocket();
-            mTxSocket.configure(aTxAddress,aTxPort,aMessageParserCreator.createNew());
+            mTxSocket = new UdpTxMsgSocket();
+            mTxSocket.configure(aMonkeyCreator,aTxAddress,aTxPort);
         }
 
         //**********************************************************************

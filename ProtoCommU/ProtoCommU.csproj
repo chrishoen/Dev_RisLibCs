@@ -48,6 +48,7 @@
     <Compile Include="Source\MyCmdLineExec.cs" />
     <Compile Include="Source\Program.cs" />
     <Compile Include="Source\UdpMsgSocket.cs" />
+    <Compile Include="Source\UdpMsgThread.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
