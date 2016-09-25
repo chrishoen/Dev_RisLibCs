@@ -44,16 +44,16 @@
     <Compile Include="Source\ByteContent_Main.cs" />
     <Compile Include="Source\ByteContent_RType.cs" />
     <Compile Include="Source\ByteContent_VType.cs" />
-    <Compile Include="Source\ByteMsgAParser.cs" />
-    <Compile Include="Source\ByteMsgB.cs" />
-    <Compile Include="Source\ByteMsgBCopier.cs" />
     <Compile Include="Source\CmdLineCmd.cs" />
     <Compile Include="Source\CmdLineConsole.cs" />
     <Compile Include="Source\CmdLineExec.cs" />
     <Compile Include="Source\CmdLineFile.cs" />
+    <Compile Include="Source\MsgMonkey.cs" />
     <Compile Include="Source\PortDef.cs" />
     <Compile Include="Source\Print.cs" />
     <Compile Include="Source\PrintSettings.cs" />
+    <Compile Include="Source\UdpMsgSocket.cs" />
+    <Compile Include="Source\UdpMsgThread.cs" />
     <Compile Include="Source\UdpStringSocket.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

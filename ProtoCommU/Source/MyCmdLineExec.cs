@@ -27,22 +27,22 @@ namespace MainApp
 
         public override void execute(CmdLineCmd aCmd)
         {
-            if (aCmd.isCmd("GO1")) OnGo1(aCmd);
-            if (aCmd.isCmd("GO2")) OnGo2(aCmd);
-            if (aCmd.isCmd("GO3")) OnGo3(aCmd);
-            if (aCmd.isCmd("GO4")) OnGo4(aCmd);
-            if (aCmd.isCmd("GO5")) OnGo5(aCmd);
+            if (aCmd.isCmd("GO1")) ExecuteGo1(aCmd);
+            if (aCmd.isCmd("GO2")) ExecuteGo2(aCmd);
+            if (aCmd.isCmd("GO3")) ExecuteGo3(aCmd);
+            if (aCmd.isCmd("GO4")) ExecuteGo4(aCmd);
+            if (aCmd.isCmd("GO5")) ExecuteGo5(aCmd);
         }
 
         //**********************************************************************
 
-        public void OnGo1(CmdLineCmd aCmd)
+        public void ExecuteGo1(CmdLineCmd aCmd)
         {
         }
 
         //**********************************************************************
 
-        public void OnGo2(CmdLineCmd aCmd)
+        public void ExecuteGo2(CmdLineCmd aCmd)
         {
             aCmd.setArgDefault(1, "aaaaaaa");
             aCmd.setArgDefault(2, 111);
@@ -53,7 +53,7 @@ namespace MainApp
 
         //**********************************************************************
 
-        public void OnGo3(CmdLineCmd aCmd)
+        public void ExecuteGo3(CmdLineCmd aCmd)
         {
             ByteBuffer tBuffer = new ByteBuffer(1000);
             TestMsg tTxMsg = new TestMsg();
@@ -71,7 +71,7 @@ namespace MainApp
 
         //**********************************************************************
 
-        public void OnGo4(CmdLineCmd aCmd)
+        public void ExecuteGo4(CmdLineCmd aCmd)
         {
             ByteBuffer tBuffer = new ByteBuffer(1000);
             DataMsg tTxMsg = new DataMsg();
@@ -90,7 +90,7 @@ namespace MainApp
 
         //**********************************************************************
 
-        public void OnGo5(CmdLineCmd aCmd)
+        public void ExecuteGo5(CmdLineCmd aCmd)
         {
             aCmd.setArgDefault(1, 0x10);
 
