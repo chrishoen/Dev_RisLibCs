@@ -18,14 +18,6 @@ namespace Ris
 
         public virtual void copyToFrom(ByteBuffer aBuffer) { }
 
-        // General purpose identifier
-        public int mMessageType;
-
-        // Constructor
-        public ByteContent()
-        {
-            mMessageType = 0;
-        }
     };
 
     //******************************************************************************

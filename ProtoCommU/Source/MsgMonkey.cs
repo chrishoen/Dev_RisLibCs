@@ -36,7 +36,7 @@ namespace Ris
 
         public BaseMsgMonkey(BaseMsgCreator aCreator)
         {
-           mCreator = aCreator;
+           mMsgCreator = aCreator;
 
            mHeaderLength=0;
            mMessageLength=0;
@@ -73,7 +73,7 @@ namespace Ris
         // Create a new message based on a message type
         public ByteContent createMessage(int aMessageType)
         {
-            return mCreator.createMsg(aMessageType);
+            return mMsgCreator.createMsg(aMessageType);
         }
 
         // Preprocess a message before it is sent.
@@ -114,7 +114,7 @@ namespace Ris
 
             // Call inheritor's creator to create a new message based on the
             // message type that was extracted from the header.
-            ByteContent aMsg = mCreator.createMsg(mMessageType);
+            ByteContent aMsg = mMsgCreator.createMsg(mMessageType);
 
             // Guard.
             if (aMsg==null) return null;
@@ -155,7 +155,7 @@ namespace Ris
 
             // Call inheritor's creator to create a new message based on the
             // message type that was extracted from the header.
-            ByteContent aMsg = mCreator.createMsg(mMessageType);
+            ByteContent aMsg = mMsgCreator.createMsg(mMessageType);
 
             // Guard
             if (aMsg==null) return null;
@@ -172,7 +172,7 @@ namespace Ris
         //***************************************************************************
         // Message creator, this must be set by the inheritor.
 
-        BaseMsgCreator mCreator;
+        public BaseMsgCreator mMsgCreator;
 
         //***************************************************************************
         //***************************************************************************

@@ -54,11 +54,7 @@
     <Compile Include="Source\PortDef.cs" />
     <Compile Include="Source\Print.cs" />
     <Compile Include="Source\PrintSettings.cs" />
-    <Compile Include="Source\UdpMsgASocket.cs" />
-    <Compile Include="Source\UdpMsgAThread.cs" />
     <Compile Include="Source\UdpStringSocket.cs" />
-    <Compile Include="Source\UdpMsgBSocket.cs" />
-    <Compile Include="Source\UdpMsgBThread.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
