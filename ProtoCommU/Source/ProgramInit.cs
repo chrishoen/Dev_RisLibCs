@@ -19,8 +19,9 @@ namespace MainApp
 
         public static void initialize()
         {
-            Console.WriteLine("ProtoComm_CS BEGIN");
+            Console.WriteLine("ProtoCommU_CS BEGIN");
             initializePrint();
+            Global.initialize();
         }
 
         //**********************************************************************
@@ -29,7 +30,8 @@ namespace MainApp
 
         public static void finalize()
         {
-            Console.WriteLine("ProtoComm_CS END");
+            Global.finalize();
+            Console.WriteLine("ProtoCommU_CS END");
         }
 
         //**********************************************************************
