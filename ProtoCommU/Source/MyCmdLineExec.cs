@@ -27,11 +27,38 @@ namespace MainApp
 
         public override void execute(CmdLineCmd aCmd)
         {
+            if (aCmd.isCmd("TX"))  ExecuteTx(aCmd);
             if (aCmd.isCmd("GO1")) ExecuteGo1(aCmd);
             if (aCmd.isCmd("GO2")) ExecuteGo2(aCmd);
             if (aCmd.isCmd("GO3")) ExecuteGo3(aCmd);
             if (aCmd.isCmd("GO4")) ExecuteGo4(aCmd);
             if (aCmd.isCmd("GO5")) ExecuteGo5(aCmd);
+        }
+
+        //**********************************************************************
+
+        public void ExecuteTx (CmdLineCmd aCmd)
+        {
+            aCmd.setArgDefault(1,1);
+            int tMsgType= aCmd.argInt(1);
+
+            switch (tMsgType)
+            {
+                case 1:
+                {
+                    TestMsg tTxMsg = new TestMsg();
+                    tTxMsg.initialize();
+                    Global.mNetworkThread.sendMsg(tTxMsg);
+                    break;
+                }
+                case 5:
+                {
+                    DataMsg tTxMsg = new DataMsg();
+                    tTxMsg.initialize();
+                    Global.mNetworkThread.sendMsg(tTxMsg);
+                    break;
+                }
+            }
         }
 
         //**********************************************************************
