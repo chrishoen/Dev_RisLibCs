@@ -38,11 +38,11 @@ namespace ProtoComm
         // Message type indentifier
 
         public const int cUnspecified    =  0;
-        public const int cTest           =  1;
-        public const int cFirstMessage   =  2;
-        public const int cStatusRequest  =  3;
-        public const int cStatusResponse =  4;
-        public const int cData           =  5;
+        public const int cTestMsg           =  1;
+        public const int cFirstMessageMsg   =  2;
+        public const int cStatusRequestMsg  =  3;
+        public const int cStatusResponseMsg =  4;
+        public const int cDataMsg           =  5;
     };
 
     //******************************************************************************
@@ -61,19 +61,19 @@ namespace ProtoComm
 
             switch (aMessageType)
             {
-                case MsgIdT.cTest :
+                case MsgIdT.cTestMsg :
                     tMsg = new TestMsg();
                     break;
-                case MsgIdT.cFirstMessage :
+                case MsgIdT.cFirstMessageMsg :
                     tMsg = new FirstMessageMsg();
                     break;
-                case MsgIdT.cStatusRequest :
+                case MsgIdT.cStatusRequestMsg :
                     tMsg = new StatusRequestMsg();
                     break;
-                case MsgIdT.cStatusResponse:
+                case MsgIdT.cStatusResponseMsg:
                     tMsg = new StatusResponseMsg();
                     break;
-                case MsgIdT.cData:
+                case MsgIdT.cDataMsg:
                     tMsg = new DataMsg();
                     break;
                 default :
@@ -94,7 +94,7 @@ namespace ProtoComm
         //**************************************************************************
         public TestMsg ()
         {
-            mMessageType = MsgIdT.cTest;
+            mMessageType = MsgIdT.cTestMsg;
             mCode1 = 901;
             mCode2 = 902;
             mCode3 = 903;
@@ -124,7 +124,7 @@ namespace ProtoComm
         //**************************************************************************
         public FirstMessageMsg()
         {
-            mMessageType = MsgIdT.cFirstMessage;
+            mMessageType = MsgIdT.cFirstMessageMsg;
             mCode1 = 0;
         }
 
@@ -148,7 +148,7 @@ namespace ProtoComm
         //**************************************************************************
         public StatusRequestMsg ()
         {
-            mMessageType = MsgIdT.cStatusRequest;
+            mMessageType = MsgIdT.cStatusRequestMsg;
 
             mCode1 = 101;
             mCode2 = 102;
@@ -192,7 +192,7 @@ namespace ProtoComm
         //**************************************************************************
         public StatusResponseMsg ()
         {
-            mMessageType = MsgIdT.cStatusResponse;
+            mMessageType = MsgIdT.cStatusResponseMsg;
 
             mCode1 = 201;
             mCode2 = 202;
@@ -259,7 +259,7 @@ namespace ProtoComm
         //**************************************************************************
         public DataMsg()
         {
-            mMessageType = MsgIdT.cData;
+            mMessageType = MsgIdT.cDataMsg;
 
             mUChar  = 0;
             mUShort = 0;

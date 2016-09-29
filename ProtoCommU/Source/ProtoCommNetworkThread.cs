@@ -24,16 +24,16 @@ namespace ProtoComm
             // Calls corresponding specfic message handler method.
             switch (tRxMsg.mMessageType)
             {
-                case MsgIdT.cTest :
+                case MsgIdT.cTestMsg :
                     processRxMsg((TestMsg)tRxMsg);
                     break;
-                case MsgIdT.cStatusRequest :
+                case MsgIdT.cStatusRequestMsg :
                     processRxMsg((StatusRequestMsg)tRxMsg);
                     break;
-                case MsgIdT.cStatusResponse:
+                case MsgIdT.cStatusResponseMsg:
                     processRxMsg((StatusResponseMsg)tRxMsg);
                     break;
-                case MsgIdT.cData:
+                case MsgIdT.cDataMsg:
                     processRxMsg((DataMsg)tRxMsg);
                     break;
                 default :
