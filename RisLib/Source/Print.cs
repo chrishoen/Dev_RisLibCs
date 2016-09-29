@@ -5,8 +5,8 @@ using System.Diagnostics;
 using System.Threading;
 using Ris;
 
-namespace Ris
-{
+//namespace Ris
+//{
     //**************************************************************************
     //**************************************************************************
     //**************************************************************************
@@ -186,5 +186,5 @@ namespace Ris
         public const int  ViewRun3 = 79;
         public const int  ViewRun4 = 80;
     };
-}
+//}
 
