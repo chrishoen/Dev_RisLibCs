@@ -78,11 +78,11 @@ namespace Ris
 
             if (tRxBytes != null)
             {
-                Prn.print(Prn.SocketRun2, "UdpRxSocket Receive {0}",tRxBytes.Length);
+                Prn.print(Prn.SocketRun2, "UdpRxSocket rx message {0}",tRxBytes.Length);
             }
             else
             {
-                Prn.print(Prn.SocketRun1, "UdpRxSocket Receive FAIL ZERO1");
+                Prn.print(Prn.SocketRun1, "UdpRxSocket ERROR");
                 return null;
             }
 
@@ -106,10 +106,7 @@ namespace Ris
                 return null;
             }
 
-            Prn.print(Prn.SocketRun2, "UdpRxSocket Receive Header {0} {1}",
-                mMonkey.mMessageLength,
-                mMonkey.
-                mMessageType);
+            Prn.print(Prn.SocketRun3, "UdpRxSocket Receive Header {0}",mMonkey.mHeaderLength);
 
             //------------------------------------------------------------------
             // At this point the buffer contains the complete message.
@@ -121,7 +118,7 @@ namespace Ris
 
             if (tRxMsg == null)
             {
-                Prn.print(Prn.SocketRun1, "UdpRxSocket Receive FAIL ZERO2");
+                Prn.print(Prn.SocketRun1, "UdpRxSocket FAIL INVALID MESSAGE");
                 return null;
             }
 
@@ -186,11 +183,11 @@ namespace Ris
             try
             {
                 int tSent = mSocket.SendTo(tTxBytes, tTxLength, SocketFlags.None, mIPEndPoint);
-                Prn.print(Prn.SocketRun2, "UdpTxSocket Send {0}",tSent);
+                Prn.print(Prn.SocketRun2, "UdpTxSocket tx message {0}",tSent);
             }
             catch
             {
-                Prn.print(Prn.SocketRun2, "UdpTxSocket Send EXCEPTION");
+                Prn.print(Prn.SocketRun2, "UdpTxSocket Send ERROR");
             }
         }
     }
