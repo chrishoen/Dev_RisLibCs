@@ -70,9 +70,6 @@ namespace Ris
             // Loop line number
             int             tLineNumber = 0;
 
-            // True if current line is a comment
-            bool            tCommentFlag = false;
-
             // Nested anchor. This is used to manage files that contain nested records,
             // which are processed by nested executives.
             CmdLineExecNestedAnchor tNestedAnchor = new CmdLineExecNestedAnchor();
@@ -104,18 +101,9 @@ namespace Ris
 
                 if (tCmdLine == null) break;
 
-                // Test for comment line    
-                tCommentFlag = false;
-
-                if (tCmdLine.Length > 0)
-                {
-                    if (tCmdLine[0] == '#') tCommentFlag = true;
-                    if (tCmdLine[0] == '/') tCommentFlag = true;
-                }
-
                 // If the command line is not empty and not a comment
                 // then process it, else go on to the next line
-                if (tCmdLine.Length > 0 && !tCommentFlag)
+                if (tCmdLine.Length > 0)
                 {
                     // Put command line string to command line command
                     // for parsing

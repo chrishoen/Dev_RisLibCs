@@ -27,6 +27,7 @@ namespace MyApp
 
         public override void execute(CmdLineCmd aCmd)
         {
+            if (aCmd.isCmd("READ"))    executeRead(aCmd);
             if (aCmd.isCmd("GO1"))     executeGo1(aCmd);
             if (aCmd.isCmd("GO2"))     executeGo2(aCmd);
             if (aCmd.isCmd("GO3"))     executeGo3(aCmd);
@@ -38,10 +39,16 @@ namespace MyApp
 
         //**********************************************************************
 
-        public void executeGo1(CmdLineCmd aCmd)
+        public void executeRead(CmdLineCmd aCmd)
         {
             MyCmdLineFile tFile = new MyCmdLineFile();
             tFile.show();
+        }
+
+        //**********************************************************************
+
+        public void executeGo1(CmdLineCmd aCmd)
+        {
         }
 
         //**********************************************************************

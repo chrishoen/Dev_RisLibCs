@@ -61,11 +61,28 @@ namespace MyApp
         public override void execute(CmdLineCmd aCmd)
         {
             // Read Members
-            if (aCmd.isCmd("Code1"))        mCode1 = aCmd.argInt(1);
-            if (aCmd.isCmd("Code2"))        mCode2 = aCmd.argInt(1);
-            if (aCmd.isCmd("Code3"))        mCode3 = aCmd.argInt(1);
-            if (aCmd.isCmd("Code4"))        mCode4 = aCmd.argInt(1);
+            if (aCmd.isCmd("Code1"))      mCode1 = aCmd.argInt(1);
+            if (aCmd.isCmd("Code2"))      mCode2 = aCmd.argInt(1);
+            if (aCmd.isCmd("Code3"))      mCode3 = aCmd.argInt(1);
+            if (aCmd.isCmd("Code4"))      mCode4 = aCmd.argInt(1);
+
+            if (aCmd.isCmd("Command1"))   executeCommand1(aCmd);
+            if (aCmd.isComment())         executeIsComment(aCmd);
         }
 
-    };
+       //**********************************************************************
+
+        public void executeCommand1(CmdLineCmd aCmd)
+        {
+            Console.WriteLine("Command1 HasComment {0} {1}",aCmd.hasComment(),aCmd.comment());
+        }
+
+       //**********************************************************************
+
+        public void executeIsComment(CmdLineCmd aCmd)
+        {
+            Console.WriteLine("IsComment {0}",aCmd.comment());
+        }
+
+};
 }
