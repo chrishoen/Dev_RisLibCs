@@ -33,7 +33,7 @@ namespace MyApp
             if (aCmd.isCmd("GO4"))     executeGo4(aCmd);
             if (aCmd.isCmd("GO5"))     executeGo5(aCmd);
 
-            if (aCmd.isCommentLine())  executeCommentLine(aCmd);
+            if (aCmd.isComment())      executeIsComment(aCmd);
         }
 
         //**********************************************************************
@@ -76,15 +76,19 @@ namespace MyApp
 
         public void executeGo5(CmdLineCmd aCmd)
         {
-            Console.WriteLine("Comment {0} {1}",aCmd.isCommentLine(),aCmd.comment());
+            aCmd.setArgDefault(1,101);
+            int tX = aCmd.argInt(1);
+
+            Console.WriteLine("X       {0}",tX);
+            Console.WriteLine("Comment {0} {1}",aCmd.hasComment(),aCmd.comment());
 
         }
 
         //**********************************************************************
 
-        public void executeCommentLine(CmdLineCmd aCmd)
+        public void executeIsComment(CmdLineCmd aCmd)
         {
-            Console.WriteLine("CommentLine {0}",aCmd.commentLine());
+            Console.WriteLine("Comment {0}",aCmd.comment());
 
         }
 
