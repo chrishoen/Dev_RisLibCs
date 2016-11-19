@@ -27,10 +27,13 @@ namespace Ris
         // Argument values as primitive data types
         public const int cMaxNumOfArgs = 20;
         public List<string> mSList = new List<string>(cMaxNumOfArgs + 1);
+        public string mCommentString;
+        public string mCommentLineString;
 
         public int  mArgNum;
         public bool mDefaultFlag;
-
+        public bool mCommentFlag;
+        public bool mCommentLineFlag;
         public bool mGoodCmd;
 
         //**********************************************************************
@@ -60,7 +63,8 @@ namespace Ris
             //******************************************************************
             // Store command line
 
-            mCmdLineString = string.Copy(aString);
+            String tCmdLineString = string.Copy(aString);
+            mCmdLineString = tCmdLineString.Trim();
 
             //******************************************************************
             // Guard
@@ -71,6 +75,14 @@ namespace Ris
                 return;
             }
 
+            if (mCmdLineString[0].Equals('/'))
+            {
+                mCommentLineFlag = true;
+                mCommentLineString = mCmdLineString;
+                return;
+            }
+            mCommentLineFlag = false;
+            
             //******************************************************************
             // Parse command line into string list
 
@@ -79,16 +91,20 @@ namespace Ris
             // Loop variables
             int tBeginIndex = 0;
             int tEndIndex = 0;
+            int tCommentBeginIndex = 0;
+            int tCommentEndIndex = 0;
 
             bool tIsText = false;
             bool tIsLastChar = false;
             bool tIsSeparator = false;
             bool tIsQuote = false;
+            bool tIsComment = false;
             bool tKeepQuote = false;
 
             int tSeparatorCount = 1;
             int tTextCount = 0;
             int tQuoteCount = 0;
+            int tCommentCount = 0;
 
             // Loop for each character in string
             for (int index = 0; index < mCmdLineString.Length; index++)
@@ -102,6 +118,7 @@ namespace Ris
                 tIsText = false;
                 tIsSeparator = false;
                 tIsQuote = false;
+                tIsComment = false;
 
                 // Test if char is separator
                 for (int j = 0; j < tSeparators.Length; j++)
@@ -115,8 +132,11 @@ namespace Ris
                 // Test if char is quote
                 tIsQuote = tChar.Equals('"');
 
+                // Test if char is comment
+                tIsComment = tChar.Equals('/');
+
                 // Test if char text
-                tIsText = !tIsSeparator && !tIsQuote;
+                tIsText = !tIsSeparator && !tIsQuote && !tIsComment;
 
                 // Test if last char
                 tIsLastChar = index == mCmdLineString.Length - 1;
@@ -180,6 +200,16 @@ namespace Ris
                         }
                     }
                 }
+                else if (tIsComment)
+                {
+                    tCommentCount++;
+                    if (tCommentCount == 1)
+                    {
+                        tCommentBeginIndex = index;
+                    }
+                    tCommentEndIndex = index;
+                }
+
                 else if (tIsText)
                 {
                     tTextCount++;
@@ -198,6 +228,10 @@ namespace Ris
                     if (tTextCount > 0)
                     {
                         mSList.Add(mCmdLineString.Substring(tBeginIndex, tEndIndex - tBeginIndex + 1));
+                    }
+                    if (tCommentCount > 0)
+                    {
+                        mCommentString = mCmdLineString.Substring(tCommentBeginIndex, tCommentEndIndex - tCommentBeginIndex + 1);
                     }
                 }
             }
@@ -659,6 +693,9 @@ namespace Ris
 
         public bool isBadCmd()
         {
+            // Return false if its a comment line
+            if (mCommentLineFlag) return false;
+
             // Return true if no call to isCmd returned true
             return (!mGoodCmd);
         }
@@ -668,6 +705,23 @@ namespace Ris
         {
             if (aArgIndex >= mArgNum) return false;
             return mSList[aArgIndex].Equals(aValue,StringComparison.OrdinalIgnoreCase);
+        }
+
+        //**********************************************************************
+
+        public bool isCommentLine()
+        {
+            return mCommentLineFlag;
+        }
+
+        public String commentLine()
+        {
+            return mCommentLineString;
+        }
+
+        public String comment()
+        {
+            return mCommentString;
         }
 
         //***************************************************************************

@@ -27,11 +27,13 @@ namespace MyApp
 
         public override void execute(CmdLineCmd aCmd)
         {
-            if (aCmd.isCmd("GO1")) executeGo1(aCmd);
-            if (aCmd.isCmd("GO2")) executeGo2(aCmd);
-            if (aCmd.isCmd("GO3")) executeGo3(aCmd);
-            if (aCmd.isCmd("GO4")) executeGo4(aCmd);
-            if (aCmd.isCmd("GO5")) executeGo5(aCmd);
+            if (aCmd.isCmd("GO1"))     executeGo1(aCmd);
+            if (aCmd.isCmd("GO2"))     executeGo2(aCmd);
+            if (aCmd.isCmd("GO3"))     executeGo3(aCmd);
+            if (aCmd.isCmd("GO4"))     executeGo4(aCmd);
+            if (aCmd.isCmd("GO5"))     executeGo5(aCmd);
+
+            if (aCmd.isCommentLine())  executeCommentLine(aCmd);
         }
 
         //**********************************************************************
@@ -74,7 +76,16 @@ namespace MyApp
 
         public void executeGo5(CmdLineCmd aCmd)
         {
-//          DasComm.Settings.writeToXmlFile(@"C:\Alpha\Settings\DasCommSettings.xml");
+            Console.WriteLine("Comment {0} {1}",aCmd.isCommentLine(),aCmd.comment());
+
+        }
+
+        //**********************************************************************
+
+        public void executeCommentLine(CmdLineCmd aCmd)
+        {
+            Console.WriteLine("CommentLine {0}",aCmd.commentLine());
+
         }
 
 
