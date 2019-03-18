@@ -99,7 +99,7 @@ namespace Ris
         {
             // Socket 
             mSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,ProtocolType.Udp);
-            mIPEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), aPort);
+            mIPEndPoint = new IPEndPoint(IPAddress.Parse("192.168.1.3"), aPort);
         }
 
         //**********************************************************************
