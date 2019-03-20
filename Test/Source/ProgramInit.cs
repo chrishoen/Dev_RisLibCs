@@ -52,6 +52,11 @@ namespace MainApp
             Prn.setFilter(Prn.ThreadRun3,  false);
             Prn.setFilter(Prn.ThreadRun4,  false);
 
+            Prn.setFilter(Prn.View11, true);
+            Prn.setFilter(Prn.View12, true);
+            Prn.setFilter(Prn.View13, true);
+            Prn.setFilter(Prn.View14, true);
+
         }
     }
 }

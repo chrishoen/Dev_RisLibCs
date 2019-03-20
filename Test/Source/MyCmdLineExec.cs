@@ -38,24 +38,7 @@ namespace MainApp
 
         public void executeGo1(CmdLineCmd aCmd)
         {
-            String tProcessName = @"C:\RedInc\SDSAT\Bin\PrintView2.exe";
-
-            if (File.Exists(tProcessName))
-            {
-                if (Process.GetProcessesByName(tProcessName).Length == 0)
-                {
-                    Console.WriteLine("PrintView2.exe starting");
-                    Process.Start(tProcessName);
-                }
-                else
-                {
-                    Console.WriteLine("PrintView2.exe already started");
-                }
-            }
-            else
-            {
-                Console.WriteLine("PrintView2.exe not found");
-            }
+            Prn.print(Prn.View11, "TESTING");
         }
 
         //**********************************************************************
