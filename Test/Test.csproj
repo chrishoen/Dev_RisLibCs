@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RisLib\RisLib.csproj">
+    <ProjectReference Include="..\RisLibCs\RisLibCs.csproj">
       <Project>{24bdd76e-434d-4685-aa8b-8a7a033b5c20}</Project>
-      <Name>RisLib</Name>
+      <Name>RisLibCs</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

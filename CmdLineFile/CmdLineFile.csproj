@@ -46,13 +46,13 @@
     <Compile Include="Source\ProgramInit.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RisLib\RisLib.csproj">
-      <Project>{24bdd76e-434d-4685-aa8b-8a7a033b5c20}</Project>
-      <Name>RisLib</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\RisLibCs\RisLibCs.csproj">
+      <Project>{24bdd76e-434d-4685-aa8b-8a7a033b5c20}</Project>
+      <Name>RisLibCs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
