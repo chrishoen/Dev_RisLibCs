@@ -38,6 +38,7 @@ namespace MainApp
 
         public static void initializePrint()
         {
+          //Prn.initializeForConsole();
             Prn.initializeForWinForm();
 
             Prn.setFilter(Prn.SocketInit1, false);

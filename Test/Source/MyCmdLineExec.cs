@@ -38,14 +38,14 @@ namespace MainApp
 
         public void executeGo1(CmdLineCmd aCmd)
         {
-            Prn.print(Prn.View11, "TESTING");
+            Prn.print(Prn.View11, "GO1****************************************************");
         }
 
         //**********************************************************************
 
         public void executeGo2(CmdLineCmd aCmd)
         {
-            Prn.print(0,"TESTING");
+            Prn.print(0, "GO2****************************************************");
         }
 
         //**********************************************************************
