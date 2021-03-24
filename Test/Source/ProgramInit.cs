@@ -38,8 +38,8 @@ namespace MainApp
 
         public static void initializePrint()
         {
-          //Prn.initializeForConsole();
-            Prn.initializeForWinForm();
+            //Prn.initializeForWinForm();
+            Prn.initializeForConsole();
 
             Prn.setFilter(Prn.SocketInit1, false);
             Prn.setFilter(Prn.SocketInit2,  true);

@@ -38,7 +38,9 @@ namespace MainApp
 
         public void executeGo1(CmdLineCmd aCmd)
         {
-            Prn.print(Prn.View11, "GO1****************************************************");
+            string tString = aCmd.argString(1);
+            bool tPass = MyFunctions.IsValidIPAddress(tString);
+            Prn.print(0, "{0} {1}", tString, tPass);
         }
 
         //**********************************************************************

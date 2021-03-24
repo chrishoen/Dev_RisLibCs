@@ -47,6 +47,7 @@
     <Compile Include="Source\CmdLineExec.cs" />
     <Compile Include="Source\CmdLineFile.cs" />
     <Compile Include="Source\MsgMonkey.cs" />
+    <Compile Include="Source\MyFunctions.cs" />
     <Compile Include="Source\PortDef.cs" />
     <Compile Include="Source\Print.cs" />
     <Compile Include="Source\PrintSettings.cs" />
